@@ -1,0 +1,47 @@
+var charNumber = document.getElementsByClassName("number")
+var charOperator = document.getElementsByClassName("operator")
+
+for (let i = 0; i < charNumber.length; i++) {
+    charNumber[i].addEventListener("click",function(){angkaProses(charNumber[i].innerHTML)});
+}
+for (let i = 0; i < charOperator.length; i++) {
+    charOperator[i].addEventListener("click",function(){operatorProses(charOperator[i].innerHTML)});
+}
+
+let penampung = ''
+let angka = [0,0]
+let op = ''
+function angkaProses(input){
+    if (penampung === '') penampung = input;
+    else penampung += input;
+    document.getElementById("hasil").innerHTML = penampung;
+}
+function operatorProses(input){
+    document.getElementById("hasil").innerHTML = input;
+    if (!angka[0]) angka[0] = Number(penampung)
+    
+    if (input === '='){
+        angka[1] = Number(penampung)
+        let result = 0
+        switch (op) {
+            case '+': result = angka[0]+angka[1]; break;
+            case '-': result = angka[0]-angka[1]; break;
+            case '/': result = angka[0]/angka[1]; break;
+            case 'x': result = angka[0]*angka[1]; break;
+            case '%': result = angka[0]%angka[1]; break;
+            default:
+                result ='err'
+            break;
+        }
+        document.getElementById("hasil").innerHTML = result;
+    }
+    if (input === 'AC'){
+        document.getElementById("hasil").innerHTML = 0;
+        angka = [0,0]
+        op = ''    
+    }else{
+        op = input
+    }
+    
+    penampung = ''
+}
