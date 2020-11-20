@@ -16,7 +16,7 @@ function angkaProses(input){
         document.getElementById("hasil").style.fontSize = "20px";
     }else document.getElementById("hasil").style.fontSize = "40px";
 
-
+    if (penampung[0] === '0' && input === '0' && penampung[1] !== '.') return 0
     if (penampung === '') penampung = input;
     else penampung += input;
     document.getElementById("hasil").innerHTML = penampung;
@@ -25,8 +25,9 @@ function operatorProses(input){
     document.getElementById("hasil").style.fontSize = "40px";
     document.getElementById("hasil").innerHTML = input;
     if (!angka[0]) angka[0] = Number(penampung)
-    
+    console.log(penampung)
     if (input === '='){
+        
         angka[1] = Number(penampung)
         let result = 0
         switch (op) {
@@ -41,6 +42,9 @@ function operatorProses(input){
         }
     if (result>1e7) document.getElementById("hasil").style.fontSize = "20px";
         document.getElementById("hasil").innerHTML = result;
+        console.log(angka[0], angka[1],result)
+        angka = [0,0]
+        op = ''
     }
     if (input === 'AC'){
         document.getElementById("hasil").innerHTML = 0;
