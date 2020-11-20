@@ -12,11 +12,17 @@ let penampung = ''
 let angka = [0,0]
 let op = ''
 function angkaProses(input){
+    if (penampung.length>7){
+        document.getElementById("hasil").style.fontSize = "20px";
+    }else document.getElementById("hasil").style.fontSize = "40px";
+
+
     if (penampung === '') penampung = input;
     else penampung += input;
     document.getElementById("hasil").innerHTML = penampung;
 }
 function operatorProses(input){
+    document.getElementById("hasil").style.fontSize = "40px";
     document.getElementById("hasil").innerHTML = input;
     if (!angka[0]) angka[0] = Number(penampung)
     
@@ -33,6 +39,7 @@ function operatorProses(input){
                 result ='err'
             break;
         }
+    if (result>1e7) document.getElementById("hasil").style.fontSize = "20px";
         document.getElementById("hasil").innerHTML = result;
     }
     if (input === 'AC'){
@@ -43,5 +50,11 @@ function operatorProses(input){
         op = input
     }
     
-    penampung = ''
+    if (op === '+/-'){
+        if (penampung[0] === '-') penampung = penampung.substring(1)
+        else penampung = '-' + penampung
+        document.getElementById("hasil").innerHTML = penampung;
+        angka[0] = 0
+    }else penampung = ''
+
 }
