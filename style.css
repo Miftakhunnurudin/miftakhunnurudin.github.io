@@ -15,27 +15,30 @@ body {
 
 .container-hasil {
     width: auto;
+    height: 100px;
     /* border: 1px solid black; */
-
+    /* overflow: hidden; */
 }
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 580;
 }
 .container-hasil p {
+    /* width: 100%; */
     text-align: right;
     padding: 5px;
     padding-right: 10px;
     font-size: 40px;
+    line-height: 50px;
+    /* overflow: hidden; */
+
 }
 
 .row1, .row2, .row3, .row4, .row5 {
-    /* margin: 5px; */
     margin-top: 0;
     margin-bottom: 5;
     height: fit-content;
     width: fit-content;
-    /* border: 1px solid black; */
     padding: 5px;
 }
 
@@ -43,12 +46,23 @@ body {
     display: inline-block;
     width: 60px;
     height: 60px;
-    border: 1px solid white;
+    border: none;
     border-radius: 20%;
     font-size: large;
     box-shadow: 1px 1px 3px #b8d6bf4d,-2px -2px 4px #8db5964b;
-    background-color: snow;
+    outline: none;
 }
+
 #pad-0 {
     width: 125px;
+    border-radius: 12px;
+}
+
+.noClickButton {
+    background: snow;
+}
+
+.noClickButton:active {
+    background: linear-gradient(135deg, rgba(38, 134, 46, 0.1),
+                 rgba(255, 255, 255, 0.1));
 }
